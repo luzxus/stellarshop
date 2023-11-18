@@ -23,11 +23,13 @@ export interface AdminPermission extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 1
       }>
+    // eslint-disable-next-line @typescript-eslint/ban-types
     actionParameters: Attribute.JSON & Attribute.DefaultTo<{}>
     subject: Attribute.String &
       Attribute.SetMinMaxLength<{
         minLength: 1
       }>
+    // eslint-disable-next-line @typescript-eslint/ban-types
     properties: Attribute.JSON & Attribute.DefaultTo<{}>
     conditions: Attribute.JSON & Attribute.DefaultTo<[]>
     role: Attribute.Relation<'admin::permission', 'manyToOne', 'admin::role'>

@@ -1,9 +1,9 @@
-import React from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import List from '../../components/List/List'
-import './Products.scss'
+import { ApiProductProduct } from '../../constants'
 import useFetch from '../../hooks/useFetch'
+import './Products.scss'
 
 export type Product = {
   id: string
@@ -17,7 +17,7 @@ const Products = () => {
   const [sort, setSort] = useState<null | 'desc' | 'asc'>('asc')
   const [selectedSubCats, setSelectedSubCats] = useState<any>([])
 
-  const { data, loading, error } = useFetch(
+  const { data, loading, error } = useFetch<ApiProductProduct[]>(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`,
   )
 
@@ -44,8 +44,8 @@ const Products = () => {
           ) : (
             <>
               {!loading &&
-                data?.map((item: Product) => (
-                  <div className="inputItem" key={item.id}>
+                data?.map((item: any) => (
+                  <div className="inputItem" key={item.attributes.id}>
                     <input
                       type="checkbox"
                       id={item.id}

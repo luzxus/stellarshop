@@ -1,11 +1,8 @@
-import React from 'react'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
-import './Cart.scss'
-import { book } from '../../assets'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks'
 import { removeItem, resetCart } from '../../redux/cartReducer'
+import './Cart.scss'
 
-import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { makeRequest } from '../../makeRequest'
 

@@ -1,15 +1,14 @@
-import React from 'react'
-import { useState } from 'react'
-import './Product.scss'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import BalanceIcon from '@mui/icons-material/Balance'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import './Product.scss'
 
-import { book, placeholder } from '../../assets'
-import useFetch from '../../hooks/useFetch'
+import { placeholder } from '../../assets'
 import { ApiProductProduct } from '../../constants'
 import { useAppDispatch } from '../../hooks/reduxHooks'
+import useFetch from '../../hooks/useFetch'
 import { addToCart } from '../../redux/cartReducer'
 export type Attributes = {
   isNew: boolean

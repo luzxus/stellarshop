@@ -1,9 +1,8 @@
 import React from 'react'
-import './List.scss'
-import Card from '../Card/Card'
-import { placeholder } from '../../assets'
-import { FeaturedProduct, Product } from '../FeaturedProducts/FeaturedProducts'
 import useFetch from '../../hooks/useFetch'
+import Card from '../Card/Card'
+import { Product } from '../FeaturedProducts/FeaturedProducts'
+import './List.scss'
 export type ListProps = {
   subCats: string[]
   maxPrice: number
@@ -25,7 +24,7 @@ const List: React.FC<ListProps> = ({
   const filterByPrice = () =>
     `&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
 
-  const { data, loading, error } = useFetch(
+  const { data, loading, error } = useFetch<Product[]>(
     `${filterQueryByCategory(catId)}${subCats
       .map((item) => filterQuerySubCategory(item))
       .join('')}${filterByPrice()}`,
@@ -38,6 +37,8 @@ const List: React.FC<ListProps> = ({
     <div className="list">
       {loading
         ? 'loading'
+        : error
+        ? 'Something went wrong when fetching the product data'
         : data?.map((item: Product) => <Card item={item} key={item.id} />)}
     </div>
   )

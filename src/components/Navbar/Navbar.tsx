@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import SearchIcon from '@mui/icons-material/Search'
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
+import SearchIcon from '@mui/icons-material/Search'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.scss'
-import Cart from '../Cart/Cart'
-import cartReducer, { selectCart } from '../../redux/cartReducer'
 import { useAppSelector } from '../../hooks/reduxHooks'
+import Cart from '../Cart/Cart'
+import './Navbar.scss'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)

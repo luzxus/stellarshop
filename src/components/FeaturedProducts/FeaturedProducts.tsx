@@ -1,8 +1,8 @@
 import React from 'react'
+
+import useFetch from '../../hooks/useFetch'
 import Card from '../Card/Card'
 import './FeaturedProducts.scss'
-import useFetch from '../../hooks/useFetch'
-import { Img } from '../../constants'
 
 export interface Product {
   id: number
@@ -15,7 +15,8 @@ export interface Attributes {
   price: number
   oldPrice: number
   isNew: boolean
-  img: Img
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  img: any
   createdAt: string
   updatedAt: string
   publishedAt: string
@@ -27,7 +28,7 @@ export type FeaturedProductProps = {
 }
 
 const FeaturedProducts: React.FC<FeaturedProductProps> = ({ type }) => {
-  const { data, loading, error } = useFetch<Product>(
+  const { data, loading, error } = useFetch<Product[]>(
     `/products?populate=*&[filters][type][$eq]=${type}`,
   )
 
